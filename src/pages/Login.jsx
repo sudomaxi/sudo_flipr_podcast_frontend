@@ -9,7 +9,7 @@ export default function Login({ setCurrentUser }) {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    setCurrentUser(email);
+    setCurrentUser(true);
 
     try {
       //signup function

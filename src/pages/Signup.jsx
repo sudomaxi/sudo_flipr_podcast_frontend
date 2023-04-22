@@ -12,7 +12,7 @@ export default function Signup({ setCurrentUser }) {
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    setCurrentUser(email);
+    setCurrentUser(true);
 
     try {
       //signup function
@@ -31,7 +31,6 @@ export default function Signup({ setCurrentUser }) {
           <input required type="text" placeholder="Display name" />
           <input required type="email" placeholder="Email" />
           <input required type="password" placeholder="Password" />
-          <input required style={{ display: "none" }} type="file" id="file" />
           <button disabled={loading}>Sign up</button>
           {loading && "Signing Up ..."}
           {err && <span>Something went wrong!</span>}

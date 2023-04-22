@@ -1,16 +1,21 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState("");
-  const ProtectedRoute = () => {
+  const [currentUser, setCurrentUser] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
     if (!currentUser) {
-      return <Navigate to="/signup" />;
+      console.log(currentUser);
+      navigate("/signup");
     }
-  };
+  }, []);
+  console.log(currentUser);
+
   return (
     <div className="App">
       <Routes>
@@ -18,9 +23,9 @@ function App() {
           exact
           path="/"
           element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Home />
+            // </ProtectedRoute>
           }
         />
         <Route
