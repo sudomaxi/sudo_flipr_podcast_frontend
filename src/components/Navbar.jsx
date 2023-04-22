@@ -1,20 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import HomeIcon from '@mui/icons-material/Home';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import PlaylistAddIcon from '@mui/icons-material/PlaylistAdd';
 import '../styles/navbar.css'
 
-let bgImg = 'https://static.vecteezy.com/system/resources/thumbnails/007/642/164/small/headphone-earphone-headset-for-music-line-pop-art-potrait-logo-colorful-design-with-dark-background-abstract-illustration-vector.jpg'
+let bgImg = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59nOLSOry-Txc9i2RkaCp5WcuT_zXLHxvyfR2wxA8cuxpf2BhnhKYbNLzDuRwp-wX1ec&usqp=CAU'
+
+const playlist = [
+  {
+    title: 'My Playlist',
+    imgUrl: '',
+    list: [
+      {
+        title: 'Abhishree Interview',
+        url: '',
+        img: '',
+      },
+      {
+        title: 'E saal cup na de',
+        url: '',
+        img: '',
+      }
+    ]
+  },
+  {
+    title: 'My Playlist',
+    imgUrl: '',
+    list: [
+      {
+        title: 'Abhishree Interview',
+        url: '',
+        img: '',
+      },
+      {
+        title: 'E saal cup na de',
+        url: '',
+        img: '',
+      }
+    ]
+  },
+]
+
 export default function Navbar() {
+  const [active, setActive] = useState(0);
   return (
     <div className="Navbox">
-      Logo
+      {/* Logo
       <Link to="/">Dashboard</Link>
       <Link to="/admin">Admin</Link>
-      Signout
+      Signout */}
       <div className="logodiv">
         <div className="imgbox" style={{ backgroundImage: `url(${bgImg})` }}></div>
-        <div className="imgtext">Username Here</div>
+        <div className="imgtext">Anmol</div>
       </div>
 
+      <div className="line"></div>
+      <div className="navmenu-listbox">
+        <div className={active === 0 ? 'menu-item active' : 'menu-item'} style={active === 0 ? {} : {}} onClick={() => setActive(0)}><HomeIcon />Home</div>
+        <Link to="/admin" style={{ textDecoration: 'none' }}>
+          <div className={active === 1 ? 'menu-item active' : 'menu-item'} onClick={() => setActive(1)}><AdminPanelSettingsIcon />Admin</div>
+        </Link>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <div className={active === 2 ? 'menu-item active' : 'menu-item bg-line'} onClick={() => setActive(2)}><DashboardIcon />Dashboard</div>
+        </Link>
+        <div className={active === 3 ? 'menu-item active' : 'menu-item'} onClick={() => setActive(3)}><FavoriteIcon />Favourites</div>
+        <div className={active === 4 ? 'menu-item active' : 'menu-item'} onClick={() => setActive(4)}><PlaylistAddIcon />Playlists</div>
+      </div>
+      <div className="line"></div>
     </div>
   );
 }

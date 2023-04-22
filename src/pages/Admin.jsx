@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Add from "../assets/add.png";
+import BackupIcon from '@mui/icons-material/Backup';
 
 export default function Admin() {
   return (
@@ -19,8 +20,8 @@ export default function Admin() {
           <input required type="text" placeholder="Tags" />
           <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
-            <img src={Add} alt="" />
-            <span>Add audio</span>
+            <BackupIcon />
+            <span>Add file</span>
           </label>
           <button>Add Podcast</button>
           {/* {loading && "Uploading and compressing the image please wait..."}
