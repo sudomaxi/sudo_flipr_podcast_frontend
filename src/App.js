@@ -1,8 +1,10 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
+import Admin from "./pages/Admin";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
@@ -18,6 +20,7 @@ function App() {
 
   return (
     <div className="App">
+      {currentUser ? <Navbar /> : ""}
       <Routes>
         <Route
           exact
@@ -36,6 +39,7 @@ function App() {
           path="/signup"
           element={<Signup setCurrentUser={setCurrentUser} />}
         />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </div>
   );
