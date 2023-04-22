@@ -4,7 +4,7 @@ import '../styles/home.css'
 
 export default function Home() {
   return (
-    <div>
+    <div style={{ width: '100%', overflow: 'hidden' }}>
       <Dashboard />
     </div>
   );
