@@ -19,7 +19,7 @@ function App() {
   console.log(currentUser);
 
   return (
-    <div className="App">
+    <div className="App" style={{ background: 'black' }}>
       {currentUser ? <Navbar /> : ""}
       <Routes>
         <Route
