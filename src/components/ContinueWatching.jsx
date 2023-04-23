@@ -2,13 +2,61 @@ import React from "react";
 import logo from "../assets/bg.jpg";
 
 export default function ContinueWatching() {
+  const trending = [
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+    {
+      title: "AbcRounded",
+      artist: "AbcRounded",
+    },
+  ];
   return (
     <div className="continue">
-      <h1>Continue Wacthing</h1>
-      <div className="slides">
-        <img src={logo} alt="image" />
-        <h3>Title</h3>
-        <h4>Description</h4>
+      <h1>Continue Watching</h1>
+      <div
+        className="scroll"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          paddingBottom: "20px",
+          overflowX: "scroll",
+        }}
+      >
+        {trending.map((tmp) => {
+          return (
+            <div className="slides">
+              <img src={logo} alt="image" />
+              <h3>{tmp.title}</h3>
+              <h4>{tmp.artist}</h4>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

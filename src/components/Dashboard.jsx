@@ -6,10 +6,10 @@ import LikedVideos from "./LikedVideos";
 
 export default function Dashboard() {
   return (
-    <div className="parent" style={{ width: "100%", height: '100vh' }}>
+    <div className="parent" style={{ width: "100%", height: "100vh" }}>
       <Search />
-      <ContinueWacthing />
       <Trending />
+      <ContinueWacthing />
       <LikedVideos />
     </div>
   );

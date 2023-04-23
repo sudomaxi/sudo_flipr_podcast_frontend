@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Admin from "./pages/Admin";
+import Favourites from "./pages/Favourites";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
@@ -16,7 +17,7 @@ function App() {
       navigate("/signup");
     }
   }, []);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   return (
     <div className="App">
@@ -40,6 +41,7 @@ function App() {
           element={<Signup setCurrentUser={setCurrentUser} />}
         />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/favourites" element={<Favourites />} />
       </Routes>
     </div>
   );

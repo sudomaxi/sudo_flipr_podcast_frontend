@@ -7,12 +7,16 @@ export default function Search() {
     <div
       style={{
         width: "100%",
-        height: "70px",
+        height: "50px",
         display: "flex",
-        alignItems: "end",
-        justifyContent: "center",
+        marginTop: "20px",
+        // alignItems: "end",
+        // justifyContent: "center",
       }}
     >
+      <div className="search-button">
+        <SearchIcon fontSize="large" />
+      </div>
       <div className="searchbox">
         <input
           type="text"
@@ -20,9 +24,6 @@ export default function Search() {
           required
           className="input-text"
         />
-        <div className="search-button">
-          <SearchIcon fontSize="large" />
-        </div>
       </div>
     </div>
   );

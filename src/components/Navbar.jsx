@@ -81,21 +81,15 @@ export default function Navbar() {
             Admin
           </div>
         </Link>
-
-        <div
-          className={active === 3 ? "menu-item active" : "menu-item"}
-          onClick={() => setActive(3)}
-        >
-          <FavoriteIcon />
-          Favourites
-        </div>
-        <div
-          className={active === 4 ? "menu-item active" : "menu-item"}
-          onClick={() => setActive(4)}
-        >
-          <PlaylistAddIcon />
-          Playlists
-        </div>
+        <Link to="/favourites" style={{ textDecoration: "none" }}>
+          <div
+            className={active === 3 ? "menu-item active" : "menu-item"}
+            onClick={() => setActive(3)}
+          >
+            <FavoriteIcon />
+            Favourites
+          </div>
+        </Link>
       </div>
       <div className="line"></div>
     </div>
