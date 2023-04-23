@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Add from "../assets/add.png";
-import BackupIcon from '@mui/icons-material/Backup';
+import BackupIcon from "@mui/icons-material/Backup";
 
 export default function Admin() {
   return (
-    <div className="formContainer">
+    <div className="adminFormContainer">
       <div className="formWrapper">
         <span className="logo">Podcasts</span>
         <span className="title"></span>
