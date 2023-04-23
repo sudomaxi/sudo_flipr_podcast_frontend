@@ -1,0 +1,33 @@
+.player-box{
+    height: 400px;
+    width: 90%;
+    margin: auto;
+}
+.player-img{
+    height: 140px;
+    width: 140px;
+    border-radius: 40px;
+    margin: auto;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.player-buttons{
+    color: rgb(252, 94, 41);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.player-slider{
+    color: white;
+    height: 20px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}

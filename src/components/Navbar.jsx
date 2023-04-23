@@ -6,6 +6,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import "../styles/navbar.css";
+import Player from "./Player";
 
 let bgImg =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59nOLSOry-Txc9i2RkaCp5WcuT_zXLHxvyfR2wxA8cuxpf2BhnhKYbNLzDuRwp-wX1ec&usqp=CAU";
@@ -92,6 +93,7 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="line"></div>
+      <Player />
     </div>
   );
 }
