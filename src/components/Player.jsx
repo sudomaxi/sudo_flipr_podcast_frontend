@@ -11,6 +11,7 @@ import PauseIcon from '@mui/icons-material/Pause';
 
 export default function Player() {
     let imgUrl = 'https://images.unsplash.com/photo-1601312378427-822b2b41da35?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGlhbm8lMjBrZXlib2FyZHxlbnwwfHwwfHw%3D&w=1000&q=80'
+
     const [isPlaying, setIsPlaying] = useState(false);
     const [play, { pause, duration, sound }] = useSound(song);
     const SongPlay = () => {
@@ -22,6 +23,33 @@ export default function Player() {
             setIsPlaying(true);
         }
     };
+    const [currTime, setCurrTime] = useState({
+        min: "",
+        sec: "",
+    });
+    const [seconds, setSeconds] = useState();
+    useEffect(() => {
+        const sec = duration / 1000;
+        const min = Math.floor(sec / 60);
+        const secRemain = Math.floor(sec % 60);
+        const time = {
+            min: min,
+            sec: secRemain
+        };
+        const interval = setInterval(() => {
+            if (sound) {
+                setSeconds(sound.seek([])); // setting the seconds state with the current state
+                const min = Math.floor(sound.seek([]) / 60);
+                const sec = Math.floor(sound.seek([]) % 60);
+                setCurrTime({
+                    min,
+                    sec,
+                });
+            }
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [sound]);
+
     return (
         <div className="player-box">
             <div className="player-img" style={{ backgroundImage: `url(${imgUrl})` }}></div>
@@ -31,7 +59,11 @@ export default function Player() {
                 <SkipNextIcon fontSize="large" />
             </div>
             <div className="player-slider">
-                <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" style={{ color: 'white' }} />
+                <div className="">{currTime.min}:{currTime.sec < 10 ? `0${currTime.sec}` : `${currTime.sec}`}</div>
+                <Slider defaultValue={0} size="small" aria-label={seconds} min={0} max={duration / 360} value={seconds} style={{ color: 'white' }} onChange={(e) => {
+                    sound.seek([e.target.value]);
+                }} />
+                <div className="time">{Math.floor(duration / 360 / 60)}:{Math.floor(duration / 360 % 60) < 10 ? `0${Math.floor(duration / 360 % 60)}` : `${Math.floor(duration / 360 % 60)}`}</div>
             </div>
 
         </div>
