@@ -124,16 +124,13 @@ code {
 
 .App{
   display: flex;
-}
-.parent{
   background-image: url('./assets/bg2.jpg');
   background-size: cover;
-  background-color: #a7bcff;
+}
+.parent{
   overflow-y: scroll;
 }
 .adminFormContainer {
-  background-image: url('./assets/bg2.jpg');
-  background-size: cover;
   height: 100vh;
   width: 100%;
   display: flex;
