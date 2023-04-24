@@ -1,9 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Add from "../assets/add.png";
 import BackupIcon from "@mui/icons-material/Backup";
 
 export default function Admin() {
+  const [curr, setCurr] = useState('')
+  const [taglist, setTaglist] = useState([])
+  const TagAdder = (e) => {
+    setTaglist(taglist.concat([`${e}`]))
+    console.log(taglist)
+  };
+
   return (
     <div className="adminFormContainer">
       <div className="formWrapper">
@@ -17,8 +25,11 @@ export default function Admin() {
           </label>
           <input required type="text" placeholder="Title for Podcast" />
           <input required type="text" placeholder="Artist" />
-          <input required type="text" placeholder="Tags" />
           <input required style={{ display: "none" }} type="file" id="file" />
+          <div className="tag-adder">
+            <input required type="text" placeholder="Add a tag" onChange={(e) => { setCurr(e.target.value); console.log(curr) }} />
+
+          </div>
           <label htmlFor="file">
             <BackupIcon />
             <span>Add file</span>
