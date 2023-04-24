@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Admin from "./pages/Admin";
 import Favourites from "./pages/Favourites";
+import Video from "./components/Video";
+import video from "./assets/video_1.mp4";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
@@ -42,6 +44,7 @@ function App() {
         />
         <Route path="/admin" element={<Admin />} />
         <Route path="/favourites" element={<Favourites />} />
+        <Route path="/player" element={<Video url={video} />} />
       </Routes>
     </div>
   );

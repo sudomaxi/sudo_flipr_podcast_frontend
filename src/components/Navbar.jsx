@@ -91,6 +91,15 @@ export default function Navbar() {
             Favourites
           </div>
         </Link>
+        <Link to="/player" style={{ textDecoration: "none" }}>
+          <div
+            className={active === 4 ? "menu-item active" : "menu-item"}
+            onClick={() => setActive(4)}
+          >
+            <FavoriteIcon />
+            Video
+          </div>
+        </Link>
       </div>
       <div className="line"></div>
       <Player />
