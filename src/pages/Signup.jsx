@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import CONST from "../constant";
 
 export default function Signup({ setCurrentUser }) {
   const [err, setErr] = useState(false);
@@ -15,8 +17,33 @@ export default function Signup({ setCurrentUser }) {
     setCurrentUser(true);
 
     try {
-      //signup function
-      navigate("/");
+      const data = {
+        username: displayName,
+        password: password,
+        email: email,
+        role: 'user'
+      };
+      
+      axios.post(CONST.API+'/api/auth/signup', data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+
+         console.log(response.data);
+
+          navigate("/login");
+          console.log("then", response.status);
+        })
+        .catch(error => {
+          console.log("error");
+          window.alert("Error Check Details")
+        });
+      
+      
+      
+      
     } catch (err) {
       setErr(true);
       alert(err.message);

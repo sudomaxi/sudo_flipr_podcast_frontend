@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import CONST from "../constant";
+
 
 export default function Login({ setCurrentUser }) {
   const [err, setErr] = useState(false);
@@ -12,8 +15,31 @@ export default function Login({ setCurrentUser }) {
     setCurrentUser(true);
 
     try {
-      //signup function
-      navigate("/");
+      const data = {
+        username: email,
+        password: password
+      };
+      
+      axios.post(CONST.API+'/api/auth/signin', data, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          console.log(response.data);
+          console.log(response.data.accessToken);
+          localStorage.setItem("access-token",response.data.accessToken)
+          localStorage.setItem("refresh-token",response.data.refreshToken)
+          localStorage.setItem("userId",response.data._id)
+          
+
+          navigate("/");
+        })
+        .catch(error => {
+          window.alert('Login Error! Check Details');
+        });
+      
+     
     } catch (err) {
       setErr(true);
       alert(err.message);
@@ -25,7 +51,7 @@ export default function Login({ setCurrentUser }) {
         <span className="logo">Podcasts</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
-          <input required type="email" placeholder="Email" />
+          <input required type="text" placeholder="Username" />
           <input required type="password" placeholder="Password" />
           <button>Sign in</button>
           {err && <span>Something went wrong! </span>}
