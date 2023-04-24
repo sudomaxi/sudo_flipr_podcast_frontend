@@ -9,6 +9,7 @@ import Favourites from "./pages/Favourites";
 import Video from "./components/Video";
 import video from "./assets/video_1.mp4";
 
+
 function App() {
   const [currentUser, setCurrentUser] = useState(false);
   const navigate = useNavigate();
@@ -31,6 +32,16 @@ function App() {
           element={
             // <ProtectedRoute>
             <Home />
+            // </ProtectedRoute>
+          }
+        />
+      
+        <Route
+          exact
+          path="/video-play/:id/:lastwatch"
+          element={
+            // <ProtectedRoute>
+            <Video />
             // </ProtectedRoute>
           }
         />

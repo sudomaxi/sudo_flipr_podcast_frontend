@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import CONST from "../constant";
 import { useState } from "react";
+import { useNavigate } from "react-router";
+
 
 export default function Trending() {
 
@@ -79,7 +81,7 @@ axios.post(CONST.API+'/api/view', data, {
   
   }, [])
   
-
+  const navigate = useNavigate();
   // const trending = [
   //   {
   //     title: "AbcRounded",
@@ -128,7 +130,7 @@ axios.post(CONST.API+'/api/view', data, {
       >
         {trending.map((tmp) => {
           return (
-            <div className="slides" onClick={()=>{markLike(tmp); }} >
+            <div className="slides" onClick={()=>{markLike(tmp); navigate(`/video-play/${tmp._id}/0`);}} >
               <img src={logo} alt="image" />
               <h3>{tmp.title}</h3>
               <h4>{tmp.artist}</h4>
