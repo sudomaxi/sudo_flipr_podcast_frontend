@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login({ setCurrentUser }) {
   const [err, setErr] = useState(false);
@@ -9,7 +10,21 @@ export default function Login({ setCurrentUser }) {
     e.preventDefault();
     const email = e.target[0].value;
     const password = e.target[1].value;
-    setCurrentUser(true);
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/auth/signin',
+        JSON.stringify({ email, password }),
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+      setCurrentUser(true);
+    } catch (e) {
+      console.log(e)
+    }
+
+
 
     try {
       //signup function
@@ -25,7 +40,7 @@ export default function Login({ setCurrentUser }) {
         <span className="logo">Podcasts</span>
         <span className="title">Login</span>
         <form onSubmit={handleSubmit}>
-          <input required type="email" placeholder="Email" />
+          <input required placeholder="Username" />
           <input required type="password" placeholder="Password" />
           <button>Sign in</button>
           {err && <span>Something went wrong! </span>}
