@@ -60,10 +60,21 @@ export default function Player() {
             </div>
             <div className="player-slider">
                 <div className="">{currTime.min}:{currTime.sec < 10 ? `0${currTime.sec}` : `${currTime.sec}`}</div>
-                <Slider defaultValue={0} size="small" aria-label={seconds} min={0} max={duration / 360} value={seconds} style={{ color: 'white' }} onChange={(e) => {
-                    sound.seek([e.target.value]);
-                }} />
-                <div className="time">{Math.floor(duration / 360 / 60)}:{Math.floor(duration / 360 % 60) < 10 ? `0${Math.floor(duration / 360 % 60)}` : `${Math.floor(duration / 360 % 60)}`}</div>
+                <input
+                    className="play-slider"
+                    type="range"
+                    min="0"
+                    max={duration / 1000}
+                    default="0"
+                    value={seconds}
+
+                    onChange={(e) => {
+                        sound.seek([e.target.value]);
+                    }}
+
+                />
+
+                <div className="time">{Math.floor(duration / 1000 / 60)}:{Math.floor(duration / 1000 % 60) < 10 ? `0${Math.floor(duration / 1000 % 60)}` : `${Math.floor(duration / 1000 % 60)}`}</div>
             </div>
 
         </div>
